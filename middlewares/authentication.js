@@ -19,6 +19,7 @@ const authentication = async (req, res, next) => {
         devMessage: `User with email "${userDecoded.email}" not found in database`,
       })
     }
+    req.user = matchUser
     res.locals.user = matchUser
     res.locals.method = req.method
     return next()
