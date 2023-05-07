@@ -36,7 +36,7 @@ class socialMediaController{
         })
     }
     static deletesocialmedia(req,res){
-        let socialMediaId = req.params.id
+        let socialMediaId = req.params.socialMediaId
         socialmedias.destroy({
             where: {
                 socialMediaId
