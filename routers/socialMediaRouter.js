@@ -1,8 +1,10 @@
-const express = require("express")
-const app = express()
+const router = require("express").Router()
 
-app.get("/", (req, res) => {
-  res.send("OK")
-})
+const socialMediaController = require('../controllers/socialMediaController')
 
-module.exports = app
+router.post('/',socialMediaController.createsocialmedia)
+router.get('/',socialMediaController.readsocialmedia)
+router.put('/',socialMediaController.updatesocialmedia)
+router.delete('/:socialMediaId',socialMediaController.deletesocialmedia)
+
+module.exports = router
