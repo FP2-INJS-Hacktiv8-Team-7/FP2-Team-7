@@ -33,7 +33,15 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      UserId: DataTypes.INTEGER,
+      UserId: {
+        type: DataTypes.INTEGER,
+        validate: {
+          notEmpty: {
+            args: true,
+            msg: "UserId is required",
+          },
+        },
+      },
     },
     {
       sequelize,

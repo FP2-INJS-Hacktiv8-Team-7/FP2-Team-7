@@ -1,10 +1,14 @@
 const router = require("express").Router()
 
-const socialMediaController = require('../controllers/socialMediaController')
+const socialMediaController = require("../controllers/socialMediaController")
+const authentication = require("../middlewares/authentication")
+const authorization = require("../middlewares/authorization")
 
-router.post('/',socialMediaController.createsocialmedia)
-router.get('/',socialMediaController.readsocialmedia)
-router.put('/',socialMediaController.updatesocialmedia)
-router.delete('/:socialMediaId',socialMediaController.deletesocialmedia)
+router.use(authentication)
+router.post("/", socialMediaController.createsocialmedia)
+router.get("/", socialMediaController.readsocialmedia)
+// router.use(authorization)
+router.put("/:id", socialMediaController.updatesocialmedia)
+router.delete("/:id", socialMediaController.deletesocialmedia)
 
 module.exports = router

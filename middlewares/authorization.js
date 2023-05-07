@@ -114,7 +114,7 @@ const authorization = (req, res, next) => {
         if (!socmed) {
           return res.status(404).json({
             name: "Data not found",
-            devMessage: `Comment with id ${id} not found`,
+            devMessage: `Social media with id ${id} not found`,
           })
         }
 
