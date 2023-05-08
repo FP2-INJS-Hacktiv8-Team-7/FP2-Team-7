@@ -11,10 +11,10 @@ const {
 
 app.use(authentication)
 app.get("/", getAllComments)
-app.use(authorization)
-app.post("/", createComment)
 app.use("/:id", authorization)
 app.put("/:id", updateComment)
 app.delete("/:id", deleteComment)
+app.use(authorization)
+app.post("/", createComment)
 
 module.exports = app

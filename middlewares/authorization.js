@@ -55,9 +55,10 @@ const authorization = (req, res, next) => {
       })
 
     // Authorization Handler for Comments Endpoint
-  } else if (url === "/comments" || url === `/comments/${id}`) {
+  } else if (url === "/comments") {
     // For createComment
     const { PhotoId } = req.body
+    console.log(url)
     if (PhotoId) {
       Photo.findOne({ where: { id: PhotoId } })
         .then((photo) => {
@@ -67,21 +68,14 @@ const authorization = (req, res, next) => {
               devMessage: `Photo with id ${PhotoId} not found`,
             })
           }
-          if (photo.UserId === authenticatedUser.id) {
-            return next()
-          } else {
-            return res.status(403).json({
-              name: "Authorization Error",
-              devMessage: `User with id "${authenticatedUser.id}" does not have permission to access Photo with id "${id}"`,
-            })
-          }
+          return next()
         })
         .catch((err) => {
           console.log(err)
           return res.status(500).json(err)
         })
     }
-
+  } else if (url === `/comments/${id}`) {
     // For UpdateComment
     if (id) {
       Comment.findOne({ where: { id } })
