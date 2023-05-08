@@ -1,8 +1,14 @@
-const express = require("express")
-const app = express()
+const router = require("express").Router()
 
-app.get("/", (req, res) => {
-  res.send("OK")
-})
+const socialMediaController = require("../controllers/socialMediaController")
+const authentication = require("../middlewares/authentication")
+const authorization = require("../middlewares/authorization")
 
-module.exports = app
+router.use(authentication)
+router.post("/", socialMediaController.createsocialmedia)
+router.get("/", socialMediaController.readsocialmedia)
+router.use("/:id", authorization)
+router.put("/:id", socialMediaController.updatesocialmedia)
+router.delete("/:id", socialMediaController.deletesocialmedia)
+
+module.exports = router
