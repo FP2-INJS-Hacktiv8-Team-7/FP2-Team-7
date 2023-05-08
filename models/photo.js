@@ -36,7 +36,10 @@ module.exports = (sequelize, DataTypes) => {
       poster_image_url: {
         type: DataTypes.TEXT,
         validate: {
-          isUrl: true,
+          isUrl: {
+            args: true,
+            msg: "Url not Valid"
+          },
           notEmpty: {
             args: true,
             msg: "Poster image url is required",

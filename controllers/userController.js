@@ -14,7 +14,6 @@ class UserController {
         age,
         phone_number
       } = req.body
-      console.log(req.body);
       const data = await User.create({
         email,
         full_name,
