@@ -80,7 +80,7 @@ const updateComment = async (req, res) => {
     }
   } catch (error) {
     console.log(error)
-    res.status(401).json(err)
+    res.status(401).json(error)
   }
 }
 

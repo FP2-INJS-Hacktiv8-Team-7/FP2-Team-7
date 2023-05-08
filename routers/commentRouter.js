@@ -10,11 +10,11 @@ const {
 } = require("../controllers/commentController")
 
 app.use(authentication)
+app.post("/", createComment)
 app.get("/", getAllComments)
 app.use("/:id", authorization)
 app.put("/:id", updateComment)
 app.delete("/:id", deleteComment)
-app.use(authorization)
-app.post("/", createComment)
+// app.use(authorization)
 
 module.exports = app
