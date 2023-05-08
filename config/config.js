@@ -17,10 +17,17 @@ module.exports = {
     dialect: "mysql",
   },
   production: {
-    username: "root",
-    password: null,
+    username: "postgres",
+    password: "MR7LFIoThotUHutvvC7D",
     database: "database_production",
-    host: "127.0.0.1",
-    dialect: "mysql",
+    host: "containers-us-west-205.railway.app",
+    dialect: "postgres",
+    port: "5704",
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
   },
 }
