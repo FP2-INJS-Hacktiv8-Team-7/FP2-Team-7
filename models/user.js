@@ -19,7 +19,12 @@ module.exports = (sequelize, DataTypes) => {
     {
       full_name: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
+          notNull: {
+            args: true,
+            msg: "Fullname is required",
+          },
           notEmpty: {
             args: true,
             msg: "Fullname is required",
@@ -29,8 +34,13 @@ module.exports = (sequelize, DataTypes) => {
       email: {
         type: DataTypes.STRING,
         unique: true,
+        allowNull: false,
         validate: {
           isEmail: true,
+          notNull: {
+            args: true,
+            msg: "Email is required",
+          },
           notEmpty: {
             args: true,
             msg: "Email is required",
@@ -43,7 +53,12 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: "This username has been used, try another one",
         },
+        allowNull: false,
         validate: {
+          notNull: {
+            args: true,
+            msg: "Username is required",
+          },
           notEmpty: {
             args: true,
             msg: "Username is required",
@@ -52,7 +67,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       password: {
         type: DataTypes.STRING,
+        allowNull: false,
         validate: {
+          notNull: {
+            args: true,
+            msg: "Password is required",
+          },
           notEmpty: {
             args: true,
             msg: "Password is required",
@@ -61,18 +81,28 @@ module.exports = (sequelize, DataTypes) => {
       },
       profile_image_url: {
         type: DataTypes.TEXT,
+        allowNull: false,
         validate: {
           isUrl: true,
+          notNull: {
+            args: true,
+            msg: "Profile Image Url is required",
+          },
           notEmpty: {
             args: true,
-            msg: "Profile image url is required",
+            msg: "Profile Image Url is required",
           },
         },
       },
       age: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
           isNumeric: true,
+          notNull: {
+            args: true,
+            msg: "Age is required",
+          },
           notEmpty: {
             args: true,
             msg: "Age is required",
@@ -81,11 +111,16 @@ module.exports = (sequelize, DataTypes) => {
       },
       phone_number: {
         type: DataTypes.BIGINT,
+        allowNull: false,
         validate: {
           isNumeric: true,
+          notNull: {
+            args: true,
+            msg: "Phone Number is required",
+          },
           notEmpty: {
             args: true,
-            msg: "Phone number is required",
+            msg: "Phone Number is required",
           },
         },
       },
