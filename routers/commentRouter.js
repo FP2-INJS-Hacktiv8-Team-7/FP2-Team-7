@@ -10,6 +10,7 @@ const {
 } = require("../controllers/commentController")
 
 app.use(authentication)
+app.use(authorization)
 app.post("/", createComment)
 app.get("/", getAllComments)
 app.use("/:id", authorization)
