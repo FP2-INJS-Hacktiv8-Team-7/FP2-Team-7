@@ -19,7 +19,7 @@ module.exports = {
   production: {
     username: "postgres",
     password: "MR7LFIoThotUHutvvC7D",
-    database: "database_production",
+    database: "railway",
     host: "containers-us-west-205.railway.app",
     dialect: "postgres",
     port: "5704",
