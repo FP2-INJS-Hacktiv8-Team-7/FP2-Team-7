@@ -15,8 +15,6 @@ class UserController {
         phone_number,
       } = req.body
 
-      const data = await User.create({
-
       // Check if email duplicate
       const emailDuplicate = await User.findOne({ where: { email } })
       if (emailDuplicate) {
