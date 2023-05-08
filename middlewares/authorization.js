@@ -57,14 +57,14 @@ const authorization = (req, res, next) => {
     // Authorization Handler for Comments Endpoint
   } else if (url === "/comments" || url === `/comments/${id}`) {
     // For createComment
-    const PhotoId = req.body.PhotoId
+    const { PhotoId } = req.body
     if (PhotoId) {
       Photo.findOne({ where: { id: PhotoId } })
         .then((photo) => {
           if (!photo) {
             return res.status(404).json({
               name: "Data not found",
-              devMessage: `Photo with id ${id} not found`,
+              devMessage: `Photo with id ${PhotoId} not found`,
             })
           }
           if (photo.UserId === authenticatedUser.id) {

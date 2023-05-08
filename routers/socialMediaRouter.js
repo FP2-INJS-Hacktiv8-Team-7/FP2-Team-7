@@ -7,7 +7,7 @@ const authorization = require("../middlewares/authorization")
 router.use(authentication)
 router.post("/", socialMediaController.createsocialmedia)
 router.get("/", socialMediaController.readsocialmedia)
-// router.use(authorization)
+router.use("/:id", authorization)
 router.put("/:id", socialMediaController.updatesocialmedia)
 router.delete("/:id", socialMediaController.deletesocialmedia)
 
