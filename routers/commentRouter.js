@@ -15,6 +15,5 @@ app.get("/", getAllComments)
 app.use("/:id", authorization)
 app.put("/:id", updateComment)
 app.delete("/:id", deleteComment)
-// app.use(authorization)
 
 module.exports = app
