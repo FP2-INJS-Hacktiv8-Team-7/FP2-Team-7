@@ -59,36 +59,37 @@ class UserController {
   }
 
   static async login(req, res) {
+    const { email, password } = req.body
+
     try {
-      const { email, password } = req.body
-      const user = await User.findOne({
-        where: {
-          email: email,
-        },
-      })
+      const user = await User.findOne({ where: { email } })
+
       if (!user) {
         throw {
-          code: 404,
-          message: "User not found",
+          name: "User Login Error",
+          devMessage: "User not found!",
         }
       }
       const isCorrect = comparePassword(password, user.password)
       if (!isCorrect) {
         throw {
-          code: 401,
-          message: "Incorrect password",
+          name: "User login Error",
+          devMessage: `User's password with email "${user.email}" does not match`,
         }
+      } else {
+        let payload = {
+          id: user.id,
+          email: user.email,
+          username: user.username,
+          full_name: user.full_name,
+        }
+        const token = generateToken(payload)
+        res.status(200).json({
+          token: token,
+        })
       }
-      const response = {
-        id: user.id,
-        email: user.email,
-      }
-      const token = generateToken(response)
-      res.status(200).json({
-        token,
-      })
-    } catch (error) {
-      res.status(error?.code || 500).json(error)
+    } catch (err) {
+      res.status(401).json(err)
     }
   }
 
