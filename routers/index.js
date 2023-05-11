@@ -4,9 +4,6 @@ const photoRouter = require("./photoRouter")
 const socialMediaRouter = require("./socialMediaRouter")
 const commentRouter = require("./commentRouter")
 
-router.get("/", (req, res) => {
-  return res.status(200).send("<h1>Hello, Welcome to FP-2 Team-7</h1>")
-})
 router.use("/users", userRouter)
 router.use("/photos", photoRouter)
 router.use("/comments", commentRouter)

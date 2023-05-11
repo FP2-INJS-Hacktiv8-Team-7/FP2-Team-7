@@ -5,7 +5,9 @@ const app = express()
 const router = require("./routers")
 const { sequelize } = require("./models")
 const PORT = process.env.PORT
+const helmet = require("helmet")
 
+app.use(helmet())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
